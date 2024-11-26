@@ -67,4 +67,23 @@ export const fetchDestinos = async () => {
       console.error('Error al eliminar el destino:', error);
       throw error;
     }
+
+  };
+
+  export const patchDestino = async (id, isFavorite) => {
+    try {
+      const response = await fetch(`http://${IP}:8000/grivero/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isFavorite }),
+      });
+
+      if (!response.ok) throw new Error('Error al actualizar el destino');
+      return await response.json();
+    } catch (error) {
+      console.error('Error al actualizar el destino:', error);
+      throw error;
+    }
   };

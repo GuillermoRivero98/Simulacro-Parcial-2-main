@@ -36,12 +36,14 @@ const DestinoList = ({ navigation }) => {
   }
 
   const renderDestino = ({ item }) => (
-    <TouchableOpacity
-      style={[styles.card, { width: width * 0.85 }]} 
-      onPress={() => navigation.navigate('DestinoDetails', { destino: item })}
+    <View
+      style={[styles.card, { width: width * 0.85 }]}
     >
+
       <View style={styles.header}>
-        <Text style={styles.name}>{item.name}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('DestinoDetails', { destino: item })}>
+          <Text style={styles.name}>{item.name}</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => toggleFavorite(item)}>
           {Platform.OS === 'android' ? (
             <Text style={[styles.favorite, item.isFavorite && styles.favoriteActive]}>
@@ -55,9 +57,10 @@ const DestinoList = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <Text>{item.description}</Text>
-        {item.difficulty}
-    </TouchableOpacity>
+      {item.difficulty}
+    </View>
   );
+
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
