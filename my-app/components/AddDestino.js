@@ -7,17 +7,18 @@ const addDestino = ({ navigation }) => {
   const [destinoName, setDestinoName] = useState('');
   const { addDestino, loading } = useContext(DestinoContext);
   const [destinoDescription, setDestinoDescription] = useState('');
+  //const [destinoDifficulty, setDestinoDifficulty]= useState ("")
 
 
   const handleSubmit = async () => {
     const newDestino = {
       name: destinoName,
       description: destinoDescription,
-      dificultad: destinoDifficulty
+      //dificultad: destinoDifficulty
     };
 
     try {
-      await postDestinos(newDestino.name, newDestino.description, newDestino.difficulty);//dificultad no me funciono a tiempo
+      await postDestinos(newDestino.name, newDestino.description);// newDestino.difficulty   dificultad no me funciono a tiempo
       await addDestino(newDestino); 
       navigation.navigate('Destinos');
     } catch (error) {
@@ -49,7 +50,7 @@ const addDestino = ({ navigation }) => {
         placeholder="Dificultad"
         value={destinoDifficulty}
         onChangeText={setDestinoName}
-      /> */}
+      />  */}
 
       <Button title="Crear Destino" onPress={handleSubmit} />
     </View>
