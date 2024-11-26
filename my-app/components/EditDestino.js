@@ -14,7 +14,7 @@ const EditDestino = ({ route, navigation }) => {
     }
 
     try {
-      await updateDestinos(destino.id, { name, description});
+      await updateDestinos(destino.id, { name, description, });
       navigation.navigate('DestinoList'); 
     } catch (error) {
       console.error('Error al actualizar destino:', error);
@@ -35,7 +35,7 @@ const EditDestino = ({ route, navigation }) => {
         placeholder="Descripción"
         value={description}
         onChangeText={setDescription}
-      />
+      />        
       <Button title="Guardar Cambios" onPress={handleUpdate} color="blue" />
     </View>
   );
